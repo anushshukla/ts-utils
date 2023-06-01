@@ -2,8 +2,8 @@
 {
   /* Top Level */
   "exclude": ["node_modules", "build", "coverage"],
-  "include": ["./src/**/*"],
-  // "files": ["./src/server/index.ts"],
+  "include": ["src/**/*"],
+  // "files": ["src/server/index.ts"],
   "watchFile": "useFsEvents",
   "watchDirectory": "useFsEvents",
   "fallbackPolling": "dynamicPriorityPolling",
@@ -15,22 +15,13 @@
     "enable": true,
     "include": []
   },
-  /* Refer https://www.typescriptlang.org/tsconfig#watch-options */
-  "watchOptions": {
-    "watchFile": "useFsEvents",
-    "watchDirectory": "useFsEvents",
-    "fallbackPolling": "dynamicPriority",
-    "synchronousWatchDirectory": true,
-    "excludeDirectories": ["../node_modules/", "../build/"],
-    "excludeFiles": ["../tsconfig"]
-  },
   "compilerOptions": {
     /* Project Options */
     "allowJs": true /* Allow javascript files to be compiled. */,
     "checkJs": false /* Report errors in .js files. */,
-    "declaration": true,
+    "declaration": false,
     "declarationMap": false /* Generates a sourcemap for each corresponding '.d.ts' file. */,
-    // "declarationDir": "./@types",
+    // "declarationDir": "@types", // if declarations are required then uncomment this
     // Refer https://www.typescriptlang.org/tsconfig#downlevelIteration
     "downlevelIteration": true,
     // Refer https://www.typescriptlang.org/tsconfig#importHelpers
@@ -38,7 +29,7 @@
     // Refer https://www.typescriptlang.org/tsconfig#isolatedModules
     "isolatedModules": false,
     "noEmit": false /* Do not emit outputs. */,
-    "outDir": "./build" /* Redirect output structure to the directory. */,
+    "outDir": "build" /* Redirect output structure to the directory. */,
     // "outFile": "./",                         /* Concatenate and emit output to single file. */
     "plugins": [
       {
@@ -61,25 +52,16 @@
     /* Refer https://www.typescriptlang.org/tsconfig#Modules_6244 */
     "allowUmdGlobalAccess": false,
     "module": "commonjs",
-    "baseUrl": "./src",
+    "baseUrl": "src",
     // "moduleResolution": "node",
     "noResolve": false,
     "paths": {
-      "@src/*": ["src/*"],
-      "@server/*": ["server/*"],
-      "@locales": ["locales"],
-      "@locales/*": ["locales/*"],
-      "@constants/*": ["constants/*"],
-      "@database/*": ["database/*"],
-      "@helpers/*": ["helpers/*"],
-      "@api/*": ["server/api/*"],
-      "@utils/*": ["utils/*"],
-      "@models/*": ["models/*"]
+      "@src/*": ["./*"]
     },
-    "resolveJsonModule": true /* Include modules imported with '.json' extension */,
-    "rootDir": "./src",
-    "rootDirs": ["./src"],
-    "typeRoots": [/*"./node_modules/@types", "./@types",*/ "./src/global.d.ts"],
+    "resolveJsonModule": false /* Include modules imported with '.json' extension */,
+    "rootDir": "src",
+    "rootDirs": ["src"],
+    "typeRoots": ["node_modules/@types", "@types"],
     "types": ["node", "jest", "express"],
 
     /* List of folders to include type definitions from. */
@@ -116,7 +98,7 @@
     "emitDeclarationOnly": false,
 
     /* Refer https://www.typescriptlang.org/tsconfig#Backwards_Compatibility_6253 */
-    "charset": "utf8",
+    // "charset": "utf8", // soon to be deprecated
     "keyofStringsOnly": false,
     "noImplicitUseStrict": false,
     "noStrictGenericChecks": false,
@@ -152,7 +134,7 @@
     "disableSolutionSearching": false,
     "disableSourceOfProjectReferenceRedirect": false,
     "incremental": true,
-    "tsBuildInfoFile": "./.tsbuildinfo",
+    "tsBuildInfoFile": ".tsbuildinfo",
 
     /* Refer https://www.typescriptlang.org/tsconfig#Output_Formatting_6256 */
     "noErrorTruncation": false,
@@ -165,5 +147,14 @@
 
     /* Refer https://www.typescriptlang.org/tsconfig#Watch_and_Build_Modes_6250 */
     "assumeChangesOnlyAffectDirectDependencies": false
+  },
+  /* Refer https://www.typescriptlang.org/tsconfig#watch-options */
+  "watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents",
+    "fallbackPolling": "dynamicPriority",
+    "synchronousWatchDirectory": true,
+    "excludeDirectories": ["node_modules/", "build/"],
+    "excludeFiles": ["tsconfig"]
   }
 }

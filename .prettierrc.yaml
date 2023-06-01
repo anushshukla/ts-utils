@@ -1,0 +1,15 @@
+arrowParens: avoid
+semi: true
+tabWidth: 2
+singleQuote: true
+bracketSpacing: true
+trailingComma: all
+endOfLine: auto
+printWidth: 120
+overrides:
+  - files: 'docs/*.md'
+    options:
+      printWidth: 60
+  - files: '*.js'
+    options:
+      parser: flow
